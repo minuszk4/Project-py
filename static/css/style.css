@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/background.jpg'); /* Cập nhật đường dẫn cho phù hợp */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav li {
+    margin: 0 35px;
+    position: relative; /* Cần thiết cho menu thả xuống */
+}
+
+nav a {
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ddd;
+}
+
+/* Menu thả xuống */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    top: 100%; /* Xuống dưới item cha */
+    left: 0;
+    z-index: 1000;
+}
+
+nav li:hover .dropdown {
+    display: block; /* Hiện thị khi di chuột */
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: white;
+}
+
+.dropdown a:hover {
+    background-color: #555;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); 
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 60px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Nút và form */
+form {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa hai nút */
+}
+
+input[type="file"] {
+    padding: 10px;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Định dạng ảnh */
+.image-container {
+    display: flex;
+    justify-content: space-around; /* Đặt hình ảnh ngang nhau */
+    margin-top: 20px;
+    width: 80%; /* Điều chỉnh để phù hợp kích thước container */
+}
+
+img {
+    max-width: 45%; /* Mỗi hình chiếm khoảng 50% */
+    height: auto;
+    border: 5px solid white;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Link về trang chủ */
+a {
+    color: white;
+    font-size: 1.2em;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.spinner {
+    display: none;
+    margin: 20px auto;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hiển thị văn bản đang tải */
+#loading-message {
+    display: none;
+    color: white;
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+.videos-container {
+    display: flex; /* Thay đổi để sử dụng Flexbox */
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px; 
+    height: 480px; 
+}
+
+video {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* Đảm bảo video không bị biến dạng */
+}

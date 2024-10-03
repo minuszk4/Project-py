@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='images/background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: right;
+        }
+
+        nav li {
+            margin: 0 35px;
+        }
+
+        nav a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Giảm chiều cao để không bị che bởi thanh điều hướng */
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+            <li><a href="{{ url_for('convert') }}">Chuyển đổi ảnh</a></li>
+            <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Giới thiệu về AnimeGAN</h1>
+        <p>Ứng dụng AnimeGAN cho phép bạn chuyển đổi ảnh thông thường thành ảnh phong cách anime một cách dễ dàng và nhanh chóng.</p>
+        <p>Hãy thử ngay bây giờ!</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi ảnh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+            <li>
+                <a href="{{ url_for('convert') }}">Chuyển đổi</a>
+                <div class="dropdown">
+                    <a href="{{ url_for('convert') }}">Chuyển đổi ảnh</a>
+                    <a href="{{ url_for('convert2vid') }}">Chuyển đổi video</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Chào mừng đến với dự án Chuyển đổi ảnh!</h1>
+        <p>Trong dự án này, chúng tôi cung cấp một công cụ đơn giản giúp người dùng có thể chuyển đổi các định dạng ảnh một cách dễ dàng và nhanh chóng.</p>
+        <p>Hãy tải lên hình ảnh của bạn và chọn định dạng mà bạn muốn chuyển đổi. Chúng tôi hỗ trợ nhiều định dạng phổ biến như JPG, PNG, GIF, và nhiều hơn nữa.</p>
+        <p>Nếu bạn có bất kỳ câu hỏi nào, hãy liên hệ với chúng tôi qua trang Giới thiệu.</p>
+    </div>
+</body>
+</html>

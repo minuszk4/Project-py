@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi ảnh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+            <li>
+                <a href="{{ url_for('convert') }}">Chuyển đổi ảnh</a>
+                <div class="dropdown">
+                    <a href="{{ url_for('convert') }}">Convert Image</a>
+                    <a href="{{ url_for('convert2vid') }}">Convert Video</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Chuyển đổi ảnh sang phong cách anime</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit">Chuyển đổi</button>
+        </form>
+
+        {% if original and anime %}
+        <div class="image-container">
+            <div>
+                <h2>Ảnh gốc</h2>
+                <img src="{{ url_for('static', filename='uploads/' + original) }}" alt="Ảnh gốc">
+            </div>
+            <div>
+                <h2>Ảnh phong cách anime</h2>
+                <img src="{{ url_for('static', filename='uploads/' + anime) }}" alt="Ảnh phong cách anime">
+            </div>
+        </div>
+        {% endif %}
+        {% if error %}
+             <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}">Trở về trang chủ</a>
+    </div>
+</body>
+</html>

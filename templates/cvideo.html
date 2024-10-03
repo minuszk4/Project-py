@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi video</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+            <li>
+                <a href="{{ url_for('convert') }}">Chuyển đổi</a>
+                <div class="dropdown">
+                    <a href="{{ url_for('convert') }}">Convert Image</a>
+                    <a href="{{ url_for('convert2vid') }}">Convert Video</a>
+                </div>
+            </li>
+            <li><a href="{{ url_for('about') }}">Giới thiệu</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Chuyển đổi video sang phong cách anime</h1>
+        <form id="convertForm" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="video/*">
+            <button type="submit">Chuyển đổi</button>
+        </form>
+
+        <!-- Thêm phần hiển thị hiệu ứng tải -->
+        <div class="spinner" id="loading-spinner"></div>
+        <div id="loading-message">Đang xử lý... Vui lòng chờ!</div>
+
+        <!-- Videos container -->
+        <div class="videos-container">
+            {% if original %}
+                <div class="video-wrapper">
+                    <h2>Video gốc</h2>
+                    <video controls width="480">
+                        <source src="{{ url_for('static', filename='uploads/' + original) }}" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video tag.
+                    </video>
+                </div>
+            {% endif %}
+
+            {% if anime_video %}
+                <div class="video-wrapper">
+                    <h2>Video phong cách anime</h2>
+                    <video controls width="480">
+                        <source src="{{ url_for('static', filename='uploads/' + anime_video) }}" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video tag.
+                    </video>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if anime_video %}
+            <!-- Nút tải về video đã chuyển đổi -->
+            <a href="{{ url_for('static', filename='uploads/' + anime_video) }}" download="{{ anime_video }}">Tải về video</a>
+
+            <!-- Nút chia sẻ video lên Facebook -->
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('static', filename='uploads/' + anime_video, _external=True) }}" target="_blank">Chia sẻ lên Facebook</a>
+        {% endif %}
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    
+        <a href="{{ url_for('index') }}">Trở về trang chủ</a>
+    </div>
+
+    <script>
+        // Lắng nghe sự kiện submit form
+        document.getElementById('convertForm').addEventListener('submit', function() {
+            // Hiển thị hiệu ứng tải
+            document.getElementById('loading-spinner').style.display = 'block';
+            document.getElementById('loading-message').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
